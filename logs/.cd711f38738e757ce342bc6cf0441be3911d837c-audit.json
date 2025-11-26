@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "E:\\Projects\\airline-booking-system\\flights-booking-service\\logs\\.cd711f38738e757ce342bc6cf0441be3911d837c-audit.json",
+    "files": [
+        {
+            "date": 1764096953710,
+            "name": "E:\\Projects\\airline-booking-system\\flights-booking-service\\logs\\error-2025-11-26.log",
+            "hash": "56de2d980f3ce4f10db4df5d7556f040c3a1e826447eea001f18db700e58d411"
+        }
+    ],
+    "hashType": "sha256"
+}
