@@ -1,0 +1,18 @@
+---------------------------------------------------- Create Booking ----------------------------------------------------
+1. curl -X POST http://localhost:4000/api/v1/bookings \
+  -H "Content-Type: application/json" \
+  -d '{"flightId": 2, "userId": 5, "noOfSeats": 1}'
+
+----------------------------------------------------- Cancel Booking ------------------------------------------------------
+1. Valid Cancel : 3->bookingId
+curl -X POST http://localhost:4000/api/v1/bookings/3/cancel \
+  -H "Content-Type: application/json"
+
+2. For pending scenario
+ a. Create a dummy booking
+ curl -X POST http://localhost:4000/api/v1/bookings \
+  -H "Content-Type: application/json" \
+  -d '{"flightId": 2, "userId": 99, "noOfSeats": 2}' //Returns id say 4
+ 
+ b. Manually "Age" the Booking (Simulate Abandonment):
+    UPDATE Bookings SET status = 'initiated', created_at = '2025-11-26 14:33:33 ' WHERE id = 4;

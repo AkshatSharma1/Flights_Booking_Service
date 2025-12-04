@@ -4,9 +4,9 @@ const { BookingRepository } = require("../repositories");
 const bookingRepository = new BookingRepository();
 const config = require("../config/serverConfig");
 const axios = require("axios");
-const { Enums } = require("../utils/common");
-const { BOOKED, CANCELLED } = Enums.BOOKING_STATUS;
-const { ErrorResponse } = require("../utils/common");
+const { BOOKING_STATUS } = require("../utils/common/enums");
+const { BOOKED, CANCELLED } = BOOKING_STATUS;
+// const { ErrorResponse } = require("../utils/common");
 const AppError = require("../utils/errors/app-error");
 
 //Create Booking
