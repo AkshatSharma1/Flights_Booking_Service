@@ -63,7 +63,7 @@ async function createBooking(data) {
     const finalPayload = {
       status: "BOOKED",
     };
-    await bookingRepository.update(booking.flightId, finalPayload);
+    await bookingRepository.update(booking.id, finalPayload);
     return booking;
   } catch (error) {
     // If the flight service failed (down, or no seats), we must CANCEL the local booking
