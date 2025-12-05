@@ -15,14 +15,18 @@ async function createBooking(req, res) {
       noOfSeats: req.body.noOfSeats,
     });
 
+    const tripDuration = req.body.itineraryDays || 3;
+
     // 2. Prepare Notification Payload
     // Ideally, fetch user email from Auth Service or User Service here.
     // For MVP, we will hardcode or accept it in body.
     const notificationPayload = {
       subject: "Booking Confirmed",
       content: `Your booking for Flight ${req.body.flightId} is confirmed. Cost: ${response.totalCost}`,
-      recepientEmail: "akshat0931@gmail.com", // Replace with real email later
+      recepientEmail: "akshat.ajay0931@gmail.com", // get from req.body either
       notificationTime: new Date(),
+      flightId: req.body.flightId,
+      tripDuration: tripDuration,
     };
 
     // 3. Send Message to Queue (Async)
