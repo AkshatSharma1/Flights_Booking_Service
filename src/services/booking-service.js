@@ -11,6 +11,7 @@ const AppError = require("../utils/errors/app-error");
 
 //Create Booking
 async function createBooking(data) {
+  
   //Splitting DB Task:
   //Initial DB Lock
   //Start Transaction of Booking DB
@@ -105,7 +106,7 @@ async function cancelBooking(bookingId) {
 
     //Update booking status here
     await bookingRepository.update(
-      bookingId,
+      booking.id,
       { status: CANCELLED },
       transaction
     );
