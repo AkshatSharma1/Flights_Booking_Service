@@ -6,48 +6,48 @@ const {BOOKED, CANCELLED, INITIATED, PENDING} = Enums.BOOKING_STATUS
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Bookings', {
+    await queryInterface.createTable("bookings", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       flight_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
         // NO REFERENCE HERE (Microservice Architecture)
       },
       user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       status: {
         type: Sequelize.ENUM,
         values: [BOOKED, CANCELLED, INITIATED, PENDING],
         defaultValue: INITIATED,
-        allowNull: false
+        allowNull: false,
       },
       no_of_seats: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 1
+        defaultValue: 1,
       },
       total_cost: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Bookings');
+    await queryInterface.dropTable("bookings");
   }
 };

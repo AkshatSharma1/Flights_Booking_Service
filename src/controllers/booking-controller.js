@@ -9,9 +9,12 @@ const idempotencyRepository = new IdempotencyRepository();
 //Create Booking
 async function createBooking(req, res) {
   try {
+    console.log(req.headers);
+    const authenticatedUserId = req.headers["x-user-id"];
+
     const response = await BookingService.createBooking({
       flightId: req.body.flightId,
-      userId: req.body.userId,
+      userId: authenticatedUserId,
       noOfSeats: req.body.noOfSeats,
     });
 
@@ -45,7 +48,8 @@ async function createBooking(req, res) {
       await idempotencyRepository.create({
         key: req.idempotencyKey,
         response: SuccessReponse,
-        userId: req.body.userId,
+        // userId: req.body.userId,
+        userId: authenticatedUserId,
       });
     }
 

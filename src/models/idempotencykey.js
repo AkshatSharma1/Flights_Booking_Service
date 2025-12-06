@@ -6,25 +6,28 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  IdempotencyKey.init({
-    key: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+  IdempotencyKey.init(
+    {
+      key: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      response: {
+        type: DataTypes.JSON,
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
-    response: {
-      type: DataTypes.JSON,
-      allowNull: false
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    {
+      sequelize,
+      modelName: "IdempotencyKey",
+      tableName: "idempotencykeys",
+      underscored: true,
     }
-  }, {
-    sequelize,
-    modelName: 'IdempotencyKey',
-    tableName:'IdempotencyKeys',
-    underscored: true,
-  });
+  );
   return IdempotencyKey;
 };

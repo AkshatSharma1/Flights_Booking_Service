@@ -9,7 +9,7 @@ async function createChannel() {
         channel = await connection.createChannel();
         
         await channel.assertExchange(EXCHANGE_NAME, 'direct', {
-            durable: false
+            durable: true
         });
         
         return channel;
